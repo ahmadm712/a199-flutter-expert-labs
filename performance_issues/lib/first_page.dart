@@ -7,11 +7,15 @@ class FirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final items = List<int>.generate(10000, (index) => index);
     return Scaffold(
-      body: ListView(
-        children: [
-          for (var i = 0; i < 1000; i++) _buildListTile(i),
-        ],
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return _buildListTile(
+            items[index],
+          );
+        },
       ),
     );
   }
